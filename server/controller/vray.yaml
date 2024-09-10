@@ -1,0 +1,17 @@
+paths:
+  /vray/start:
+    post:
+      tages:
+        - vray
+      requestBody:
+        content:
+          application/json:
+            schema:
+            $ref: '#/components/schemas/IVrayStart'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IVrayStartResponse'  

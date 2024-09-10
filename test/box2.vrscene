@@ -1,0 +1,92 @@
+/////////////////////////////////////////
+// Exported by V-Ray Plugins Exporter
+// V-Ray core version is 5.00.05 built at Jul 28 17:56:09 2020 3b0b7ce
+// Exported at Wed Aug 21 11:16:24 2024
+// V-Ray 5 for 3ds Max 23.0.0.915, hotfix 2
+/////////////////////////////////////////
+// Frame at time 0
+
+GeomStaticMesh Mesh_9129517478946703444 {
+  vertices=ListVectorHex("ZIPC600000002C000000eAFjYGDYzwDBQIrBHokNEgfxQQBEw9ggcSBugInB2CBxoBhcHMwGAOQTCu0=");
+  faces=ListIntHex("ZIPC900000003D000000eAE1zAEKwDAMQlG7rdv9bzwfpMInoMYkuco9rF56yi7f8I7XEx0Z9Ihn4/Rlx7PvH3I9HvmHjPcDIuwAfw==");
+  normals=ListVectorHex("ZIPC200100004E000000eAFljtERACAIQt2s1dys1RIVzjN/0B5wmXH81raVHLqZn0lrl6cZ7+nEm7LeudVFzjxVPZH7POiI95xWeeZ/wJrHlj304cbU/QBVmRrp");
+  faceNormals=ListIntHex("ZIPC900000003D000000eAEtyAcKwAAMw8B0773+/9MqIMNhUEREi0EVn5ux4dFpK/gauxY+W4MRrw7bxHe49PHZepRYddt+bcgBnw==");
+  map_channels=List(
+    List(
+      1,
+      ListVectorHex("ZIPC200100001F000000eAFjYEAGDfbIPAYGGB9Ew9jIKtDFYPzhox4AkOcR6Q=="),
+      ListIntHex("ZIPC9000000042000000eAEtyAkKwCAQBME1t7mMJur/f5pemIFioKuZdTT5+IoHGa8UtZO/kOTmvfkCRhk8sA0Rh+xqEz9jlYX39gOY0AGf")
+    )
+  );
+  edge_visibility=ListIntHex("ZIPC0800000010000000eAG7vS1XWpqBgQEAD1sCNQ==");
+  face_mtlIDs=ListIntHex("ZIPC300000001D000000eAFjZGBgYARiGGABMkCYGYpZgTQIM0ExAAKkAB8=");
+  smooth_derivs=0;
+  dynamic_geometry=0;
+}
+
+Node Box001@node_2 {
+  transform=Transform(Matrix(Vector(1, 0, 0), Vector(0, 1, 0), Vector(0, 0, 1)), Vector(0, 0, 0));
+  pivot_offset=Vector(-0, -0, -0);
+  geometry=Mesh_9129517478946703444;
+  material=Box001@mtl_wirecolor_2;
+  nsamples=1;
+  visible=1;
+  user_attributes="babylonjs_GUID=e161bb0a-eeba-45c8-b4bb-02a0ab9ca736;";
+  primary_visibility=1;
+  scene_name=ListString(
+    "Box001",
+    "scene/Box001",
+    "layer/0"
+  );
+}
+
+MtlSingleBRDF Box001@mtl_wirecolor_2 {
+  brdf=Box001@mtl_brdf_wirecolor_2;
+}
+
+BRDFDiffuse Box001@mtl_brdf_wirecolor_2 {
+  color=Color(1, 0, 0);
+}
+
+GeomStaticMesh Mesh_7389283807344766124 {
+  vertices=ListVectorHex("ZIPC4800000021000000eAFjYICBBnsgaz8UgwRhfBgbxAcBkBoYGywAIgDNIwS4");
+  faces=ListIntHex("ZIPC600000002E000000eAEtysENACAMw8BAYf+V6QGRrPjhJBnNbMzXtffru9dhNzpwPbgOXHsACbAAPQ==");
+  normals=ListVectorHex("ZIPCCC00000047000000eAEz+Jliz8DA0GDw84kdkGYw+JmyH4ltD2KDxCBymGpA4kDtQD0INUA2TjOR1KOogYmDaJB+mBuwiSPbBZEHkQ37AdziO9A=");
+  faceNormals=ListIntHex("ZIPC6000000034000000eAEtykcKADEQA8FxWMd1+P9r3YIRFPRBwcwyGrSKgYgfGwkHBR8uulNPp15Ore8DJGQA3w==");
+  map_channels=List(
+    List(
+      1,
+      ListVectorHex("ZIPCCC0000002E000000eAFjYGCwZ2BoAGJ0gE0MpIZScZh+EI3MRrcfzAe5C+Y2JPUgMZheBBsAprMKbw=="),
+      ListIntHex("ZIPC6000000034000000eAEtyscNwDAQxMBVsKIV+q9WPOAeA/BBSQqIuEjIOPhQsFHR0LEwnPV01r+ztvcBI+gA2g==")
+    )
+  );
+  edge_visibility=ListIntHex("ZIPC040000000C000000eAH7//8/AwAI+wL+");
+  smooth_derivs=0;
+  dynamic_geometry=0;
+}
+
+Node Pyramid001@node_4 {
+  transform=Transform(Matrix(Vector(1, 0, 0), Vector(0, 1, 0), Vector(0, 0, 1)), Vector(0, 0, 1));
+  pivot_offset=Vector(-0, -0, -0);
+  geometry=Mesh_7389283807344766124;
+  material=Pyramid001@mtl_wirecolor_4;
+  nsamples=1;
+  visible=1;
+  user_attributes="babylonjs_GUID=031d7bdc-873d-435b-a54e-a316e1089cb5;";
+  primary_visibility=1;
+  scene_name=ListString(
+    "Pyramid001",
+    "scene/Pyramid001",
+    "layer/0"
+  );
+}
+
+MtlSingleBRDF Pyramid001@mtl_wirecolor_4 {
+  brdf=Pyramid001@mtl_brdf_wirecolor_4;
+}
+
+BRDFDiffuse Pyramid001@mtl_brdf_wirecolor_4 {
+  color=Color(0, 0, 1);
+}
+
+

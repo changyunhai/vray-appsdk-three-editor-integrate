@@ -1,0 +1,11 @@
+paths: 
+  /about:
+    get:
+      description: Get about pages
+      responses:
+        200:
+          description: success
+  
+  /exit:
+    get:
+      description: Shutdown the service and exit the application

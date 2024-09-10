@@ -1,0 +1,16 @@
+components:
+  schemas:
+    IVrayRequest:
+      type: object
+      properties:
+        id:
+          type: sring
+        content: any
+      
+    IVrayResponse:
+      type: object
+      properties:
+        msg:
+          type: sring
+        errorCode:
+          type: int

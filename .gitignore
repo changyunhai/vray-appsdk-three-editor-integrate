@@ -1,0 +1,10 @@
+node_modules
+yarn.lock
+package-lock.json
+
+logs/
+2024*.*
+client/three
+
+
+

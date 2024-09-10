@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Test vray</title>
+</head>
+
+<body>
+    <div>
+        <button id="start">Start</button>
+        <button id="change">Change</button>
+        <button id="end">End</button>
+    </div>
+    <div>
+        <canvas id="canvas-img" width="400" height="300" />
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/pako/2.1.0/pako.es5.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var host = "http://localhost:5560/render";
+            var canvas = document.getElementById("canvas-img");
+            let count = 0, id = 'test';
+            const context2d = canvas.getContext("2d"), size = { width: canvas.width, height: canvas.height };
+
+            let imageInterval, heartbeatInterval;
+
+            $("#start").click(async () => {
+                const res = await $.post({ url: `${host}/start`, data: { id, size } })
+                imageInterval = setInterval(async () => {
+                    const resImg = await $.post({ url: `${host}/image`, data: { id } });
+                    if (!resImg.data.img || !resImg.data.img.data) return;
+
+                    let canvasImgData = context2d.getImageData(0, 0, size.width, size.height);
+                    let imgData = canvasImgData.data;
+                    let renderData = resImg.data.img.data;
+                    renderData = pako.ungzip(renderData);
+                    let imgDataIndex = 0, renderDataIndex = 0;
+                    for (let i = 0; i < size.width; ++i)
+                        for (let j = 0; j < size.height; ++j) {
+                            imgData[imgDataIndex++] = renderData[renderDataIndex++];
+                            imgData[imgDataIndex++] = renderData[renderDataIndex++];
+                            imgData[imgDataIndex++] = renderData[renderDataIndex++];
+                            imgData[imgDataIndex++] = 255;
+                        }
+                    context2d.putImageData(canvasImgData, 0, 0)
+                }, 1000)
+
+                heartbeatInterval = setInterval(async () => await $.post({ url: `${host}/heartbeat`, data: { id } }), 1000 * 10)
+            })
+            $("#change").click(async () => {
+                count += 5;
+                const res = await $.post({ url: `${host}/modify`, data: { id, property: "node", value: count } })
+
+            })
+            $("#end").click(async () => {
+                const res = await $.post({ url: `${host}/end`, data: { id } })
+                if (imageInterval) clearInterval(imageInterval), imageInterval = undefined;
+                if (heartbeatInterval) clearInterval(heartbeatInterval), heartbeatInterval = undefined;
+            })
+            console.log("document ready now")
+        })
+    </script>
+</body>
+
+</html>
