@@ -120,7 +120,7 @@
 		document.body.appendChild(resizer.dom);
 
 		//vray:
-		menubar.add(new MenubarVray(editor, new VrayService()))
+		menubar.add(new MenubarVray(editor, new VrayService(location.origin + "/render")))
 
 		//
 

@@ -1,10 +1,12 @@
 
 let imageInterval, heartbeatInterval;
-const id = "test"
+let id;
 
 export class VrayService {
 
     constructor(service = "http://localhost:5560/render") {
+        id = THREE.MathUtils.generateUUID();
+
         this.service = service;
         this.canvas = document.getElementById("vray-canvas")
         this.context = this.canvas.getContext("2d");
@@ -40,11 +42,15 @@ export class VrayService {
         const body = { content, id, size }
         const rv = await $.post({ url: `${this.service}/start`, data: body })
         console.log(rv);
+        if (rv.errorCode != 0) alert(rv.msg);
         const self = this;
 
         imageInterval = setInterval(async () => {
             const resImg = await $.post({ url: `${self.service}/image`, data: { id } });
-            if (!resImg.data.img || !resImg.data.img.data) return;
+            if (!resImg.data.img || !resImg.data.img.data) {
+                $("#dialog").dialog("close");
+                return;
+            }
             const context2d = self.context
 
             let canvasImgData = context2d.getImageData(0, 0, size.width, size.height);
